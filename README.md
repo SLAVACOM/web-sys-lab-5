@@ -24,9 +24,9 @@
 
 ```bash
 bundle install
-bin/rails db:migrate
-bin/rails test
-bin/rails server
+bundle exec rails db:migrate
+bundle exec rails test
+bundle exec rails server
 ```
 
 ## Что сделано
@@ -59,13 +59,13 @@ bin/rails server
 ## Тесты
 
 ```bash
-bin/rails test
+bundle exec rails test
 ```
 
 Только интеграционные:
 
 ```bash
-bin/rails test:integration
+bundle exec rails test:integration
 ```
 
 Автоматический запуск при изменении файлов (Guard):
@@ -98,3 +98,21 @@ bundle exec guard
   проверяет тест `should get home` через `root_path`.
 - Книга написана для Rails 7.0.4 и Ruby 3.1.2, здесь Rails 8.1.3.1 и Ruby 4.0.7.
   GitHub, облачная IDE и Heroku не используются, ветки не создаются.
+
+
+
+## Запуск в Windows
+
+Откройте PowerShell в папке проекта. Файл bin/rails — Ruby-скрипт без
+расширения, поэтому Windows не запускает его напрямую. Используйте обёртку
+bin/rails.bat:
+
+    .\bin\rails.bat test
+    .\bin\rails.bat db:migrate
+    .\bin\rails.bat server
+
+Также можно вызывать Rails через Bundler:
+
+    bundle exec rails test
+    bundle exec rails db:migrate
+    bundle exec rails server
